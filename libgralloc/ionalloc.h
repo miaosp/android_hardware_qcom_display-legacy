@@ -30,9 +30,9 @@
 #ifndef GRALLOC_IONALLOC_H
 #define GRALLOC_IONALLOC_H
 
-#include <linux/msm_ion.h>
 #include "memalloc.h"
 #include "gr.h"
+#include "ion_msm.h"
 
 namespace gralloc {
 
