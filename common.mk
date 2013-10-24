@@ -1,9 +1,9 @@
 #Common headers
-common_includes := hardware/qcom/display-caf-legacy/libgralloc
-common_includes += hardware/qcom/display-caf-legacy/libgenlock
-common_includes += hardware/qcom/display-caf-legacy/liboverlay
-common_includes += hardware/qcom/display-caf-legacy/libcopybit
-common_includes += hardware/qcom/display-caf-legacy/libqdutils
+common_includes := hardware/qcom/display-legacy/libgralloc
+common_includes += hardware/qcom/display-legacy/libgenlock
+common_includes += hardware/qcom/display-legacy/liboverlay
+common_includes += hardware/qcom/display-legacy/libcopybit
+common_includes += hardware/qcom/display-legacy/libqdutils
 
 ifeq ($(TARGET_USES_POST_PROCESSING),true)
     common_flags     += -DUSES_POST_PROCESSING
