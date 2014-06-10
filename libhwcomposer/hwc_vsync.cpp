@@ -66,6 +66,7 @@ static void *vsync_loop(void *param)
         }
         pthread_mutex_unlock(&ctx->vstate.lock);
 
+#ifndef NO_HW_VSYNC
        int hdmiconnected = ctx->mExtDisplay->getExternalDisplay();
 
        // vsync for primary OR HDMI ?
@@ -116,9 +117,15 @@ static void *vsync_loop(void *param)
 
       // reset fd
       fd_timestamp = -1;
+#else
+        usleep(16000);
+        proc->vsync(proc, 0, systemTime());
+#endif
 
       // repeat, whatever, you just did
     } while (true);
+
+    return NULL;
 }
 
 void init_vsync_thread(hwc_context_t* ctx)
