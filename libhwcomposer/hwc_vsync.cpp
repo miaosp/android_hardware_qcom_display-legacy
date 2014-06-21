@@ -133,9 +133,11 @@ static void *vsync_loop(void *param)
       fd_timestamp = -1;
 #else
         usleep(16666);
-        e = 1;
-        ioctl(m->framebuffer->fd, MSMFB_OVERLAY_VSYNC_CTRL, &e);
-        proc->vsync(proc, 0, systemTime());
+        if(ctx->vstate.enable == true) {
+            e = 1;
+            ioctl(m->framebuffer->fd, MSMFB_OVERLAY_VSYNC_CTRL, &e);
+            proc->vsync(proc, 0, systemTime());
+        }
 #endif
 
       // repeat, whatever, you just did
