@@ -132,6 +132,8 @@ static int fb_post(struct framebuffer_device_t* dev, buffer_handle_t buffer)
             return -errno;
         }
 
+        m->flags |= FB_NEED_SYNC_FLAG;
+
         //Signals the composition thread to unblock and loop over if necessary
         pthread_mutex_lock(&m->fbPanLock);
         m->fbPanDone = true;

@@ -134,9 +134,12 @@ static void *vsync_loop(void *param)
 #else
         usleep(16666);
         if(ctx->vstate.enable == true) {
+          if (m->flags & FB_NEED_SYNC_FLAG) {
+            m->flags &= ~FB_NEED_SYNC_FLAG;
             e = 1;
             ioctl(m->framebuffer->fd, MSMFB_OVERLAY_VSYNC_CTRL, &e);
             proc->vsync(proc, 0, systemTime());
+          }
         }
 #endif
 
